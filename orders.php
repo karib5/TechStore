@@ -42,7 +42,7 @@ if(!isset($user_id)){
       $select_orders->execute([$user_id]);
       if($select_orders->rowCount() > 0){
          while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){ 
-   ?>
+   ?> 
    <div class="box">
       <p> placed on : <span><?= $fetch_orders['placed_on']; ?></span> </p>
       <p> name : <span><?= $fetch_orders['name']; ?></span> </p>
@@ -64,13 +64,6 @@ if(!isset($user_id)){
    </div>
 
 </section>
-
-
-
-
-
-
-
 
 
 <?php include 'footer.php'; ?>
