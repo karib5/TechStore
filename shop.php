@@ -106,6 +106,7 @@ if(!isset($user_id)){
          echo '<p class="empty">no products added yet!</p>';
       }
    ?>
+   
 
    </div>
 
