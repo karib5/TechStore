@@ -16,6 +16,7 @@ if(isset($_GET['delete'])){
    $delete_message = $conn->prepare("DELETE FROM `message` WHERE id = ?");
    $delete_message->execute([$delete_id]);
    header('location:admin_contacts.php');
+
    
 
 }
