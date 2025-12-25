@@ -101,10 +101,10 @@ if(isset($_GET['delete'])){
          <input type="text" name="name" class="box" required placeholder="enter product name">
          <select name="category" class="box" required>
             <option value="" selected disabled>select category</option>
-               <option value="vegitables">Casing</option>
-               <option value="fruits">GPU</option>
-               <option value="meat">Processor</option>
-               <option value="fish">RAM</option>
+               <option value="Casing">Casing</option>
+               <option value="GPU">GPU</option>
+               <option value="Processor">Processor</option>
+               <option value="RAM">RAM</option>
          </select>
          </div>
          <div class="inputBox">
