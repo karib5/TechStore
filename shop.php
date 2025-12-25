@@ -33,12 +33,42 @@ if(!isset($user_id)){
    
 <?php include 'header.php'; ?>
 
-<section class="p-category">
+<section class="home-category">
 
-   <a href="category.php?category=fruits">Casing</a>
-   <a href="category.php?category=vegitables">GPU</a>
-   <a href="category.php?category=fish">Processor</a>
-   <a href="category.php?category=meat">RAM</a>
+   <h1 class="title">shop by category</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+   <img src="images/Casing.jpg" alt="">
+   <h3>Casing</h3>
+   <p>Durable PC casing designed to protect components and ensure proper airflow.</p>
+   <a href="category.php?category=Casing" class="btn">Casing</a>
+</div>
+
+<div class="box">
+   <img src="images/GPU.jpg" alt="">
+   <h3>Graphics Card</h3>
+   <p>High-performance GPU built for gaming, rendering, and graphic-intensive tasks.</p>
+   <a href="category.php?category=GPU" class="btn">GPU</a>
+</div>
+
+<div class="box">
+   <img src="images/Processor.jpg" alt="">
+   <h3>Processor</h3>
+   <p>Powerful CPU for multitasking, high speed processing, and system performance.</p>
+   <a href="category.php?category=Processor" class="btn">Processor</a>
+</div>
+
+<div class="box">
+   <img src="images/RAM1.jpg" alt="">
+   <h3>RAM</h3>
+   <p>Fast memory modules that improve system responsiveness and performance.</p>
+   <a href="category.php?category=RAM" class="btn">RAM</a>
+</div>
+
+
+   </div>
 
 </section>
 
