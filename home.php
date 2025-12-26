@@ -36,7 +36,7 @@ if(!isset($user_id)){
    <section class="home">
 
       <div class="content">
-   <span>build smart, upgrade better</span>
+   <span>Build smart, upgrade better</span>
    <h3>Power Your Setup With Premium Tech Components</h3>
    <p>Discover high-performance PC parts including processors, graphics cards, memory, and accessories built for speed, reliability, and power.</p>
    <a href="about.php" class="btn">about us</a>
