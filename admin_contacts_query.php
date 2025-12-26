@@ -8,6 +8,7 @@ function checkAdminSession() {
     }
 }
 
+
 function deleteMessage($conn) {
     if (isset($_GET['delete'])) {
         $delete_id = $_GET['delete'];
