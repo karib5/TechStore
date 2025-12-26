@@ -13,12 +13,12 @@ if (!isset($admin_id)) {
 if (isset($_GET['delete'])) {
    $delete_id = $_GET['delete'];
 
-   $delete_message = $conn->prepare(
-      "DELETE FROM `message` WHERE id = ?"
-   );
-   $delete_message->execute([$delete_id]);
+   $conn->prepare("DELETE FROM `message` WHERE id = ?")->execute([$delete_id]);
+
+   $_SESSION['message'] = 'Message deleted!';
 
    header('location:admin_contacts.php');
    exit;
 }
+
 ?>
