@@ -11,6 +11,7 @@ if (!isset($_SESSION['admin_id'])) {
     exit;
 }
 
+
 $admin_id = $_SESSION['admin_id'];
 
 $select_profile = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
