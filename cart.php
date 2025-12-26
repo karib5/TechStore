@@ -54,7 +54,7 @@ if(isset($_POST['update_qty'])){
 
    <?php
       $grand_total = 0;
-      $select_cart = getCartByUser($user_id);
+      $select_cart = getCartByUser(user_id: $user_id);
 
       if($select_cart->rowCount() > 0){
          while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
@@ -64,7 +64,6 @@ if(isset($_POST['update_qty'])){
          class="fas fa-times" 
          onclick="return confirm('delete this from cart?');"></a>
 
-      <a href="view_page.php?pid=<?= $fetch_cart['pid']; ?>" class="fas fa-eye"></a>
 
       <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="">
       <div class="name"><?= $fetch_cart['name']; ?></div>
