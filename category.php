@@ -110,6 +110,48 @@ function ajax_cart(btn){
 }
 }
 
+
+
+function ajax_wishlist(btn){
+
+    let form = btn.closest('.box');
+
+    let pid     = form.querySelector('input[name="pid"]').value;
+    let p_name  = form.querySelector('input[name="p_name"]').value;
+    let p_price = form.querySelector('input[name="p_price"]').value;
+    let p_image = form.querySelector('input[name="p_image"]').value;
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.open('POST', 'cart_wishlist_query.php', true);
+    xhttp.setRequestHeader(
+        'Content-type',
+        'application/x-www-form-urlencoded'
+    );
+
+    xhttp.send(
+        'add_to_wishlist=1'
+        + '&pid=' + pid
+        + '&p_name=' + p_name
+        + '&p_price=' + p_price
+        + '&p_image=' + p_image
+    );
+
+    xhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+
+            let box = document.getElementById('ajax-message');
+            box.innerHTML = `
+                <div class="message">
+                    <span>${this.responseText}</span>
+                </div>
+            `;
+
+            setTimeout(() => {
+                box.innerHTML = '';
+            }, 3000);
+        }
+    }
+}
 </script>
 
 
