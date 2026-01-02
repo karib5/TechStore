@@ -17,7 +17,7 @@
          <a href="login.php"> <i class="fas fa-angle-right"></i> login</a>
          <a href="register.php"> <i class="fas fa-angle-right"></i> register</a>
       </div>
-
+ 
       <div class="box">
          <h3>contact info</h3>
          <p> <i class="fas fa-phone"></i> 01923847193 </p>
@@ -36,5 +36,5 @@
 
    </section>
 
-
+ 
 </footer>
