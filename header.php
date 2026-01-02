@@ -37,8 +37,9 @@ if(isset($message)){
             $count_wishlist_items = $conn->prepare("SELECT * FROM `wishlist` WHERE user_id = ?");
             $count_wishlist_items->execute([$user_id]);
          ?>
-         <a href="wishlist.php"><i class="fas fa-heart"></i><span>(<?= $count_wishlist_items->rowCount(); ?>)</span></a>
-         <a href="cart.php"><i class="fas fa-shopping-cart"></i><span>(<?= $count_cart_items->rowCount(); ?>)</span></a>
+         <a href="wishlist.php"><i class="fas fa-heart"></i><span id="wishlist-count">(<?= $count_wishlist_items->rowCount(); ?>)</span></a>
+         <a href="cart.php">   <i class="fas fa-shopping-cart"></i><span id="cart-count">(<?= $count_cart_items->rowCount(); ?>)</span></a>
+
       </div>
 
       <div class="profile">
