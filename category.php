@@ -41,10 +41,19 @@ if(!isset($user_id)){
       $category_name = $_GET['category'];
       $select_products = getProductsByCategory($category_name);
 
+
+      $count_cart_items = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+            $count_cart_items->execute([$user_id]);
+            $count_wishlist_items = $conn->prepare("SELECT * FROM `wishlist` WHERE user_id = ?");
+            $count_wishlist_items->execute([$user_id]);
+
+
       if($select_products->rowCount() > 0){
-         while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){
+         while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC))
+            {
    ?>
    <form action="" class="box" method="POST">
+      
       <div class="price">$<span><?= $fetch_products['price']; ?></span>/-</div>
 
       <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
@@ -55,11 +64,13 @@ if(!isset($user_id)){
       <input type="hidden" name="p_price" value="<?= $fetch_products['price']; ?>">
       <input type="hidden" name="p_image" value="<?= $fetch_products['image']; ?>">
 
+
+
       <input type="number" min="1" value="1" name="p_qty" class="qty">
 
       <input type="button" value="add to wishlist" class="option-btn" name="add_to_wishlist" onclick="ajax_wishlist(this)">
       <input type="button" value="add to cart" class="btn" onclick="ajax_cart(this)">
-
+ 
    </form>
    <?php
          }
@@ -88,10 +99,7 @@ function ajax_cart(btn){
 
     let xhttp = new XMLHttpRequest();
     xhttp.open('POST', 'cart_wishlist_query.php', true);
-    xhttp.setRequestHeader(
-        'Content-type',
-        'application/x-www-form-urlencoded'
-    );
+    xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 
     xhttp.send('add_to_cart=1' + '&pid=' + pid + '&p_name=' + p_name  + '&p_price=' + p_price + '&p_image=' + p_image + '&p_qty=' + p_qty);
 
@@ -123,18 +131,9 @@ function ajax_wishlist(btn){
 
     let xhttp = new XMLHttpRequest();
     xhttp.open('POST', 'cart_wishlist_query.php', true);
-    xhttp.setRequestHeader(
-        'Content-type',
-        'application/x-www-form-urlencoded'
-    );
+    xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 
-    xhttp.send(
-        'add_to_wishlist=1'
-        + '&pid=' + pid
-        + '&p_name=' + p_name
-        + '&p_price=' + p_price
-        + '&p_image=' + p_image
-    );
+    xhttp.send('add_to_wishlist=1'+ '&pid=' + pid + '&p_name=' + p_name+ '&p_price=' + p_price+ '&p_image=' + p_image);
 
     xhttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
@@ -146,10 +145,8 @@ function ajax_wishlist(btn){
                 </div>
             `;
 
-            setTimeout(() => {
-                box.innerHTML = '';
-            }, 3000);
-        }
+            setTimeout(() => {box.innerHTML = '';}, 3000);
+         }
     }
 }
 </script>
