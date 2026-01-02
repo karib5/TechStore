@@ -14,15 +14,10 @@ if(!isset($user_id)){
 if(isset($_POST['order'])){
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
    $number = $_POST['number'];
-   $number = filter_var($number, FILTER_SANITIZE_STRING);
    $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
    $method = $_POST['method'];
-   $method = filter_var($method, FILTER_SANITIZE_STRING);
    $address = 'flat no. '. $_POST['flat'] .' '. $_POST['street'] .' '. $_POST['city'] .' '. $_POST['state'] .' '. $_POST['country'] .' - '. $_POST['pin_code'];
-   $address = filter_var($address, FILTER_SANITIZE_STRING);
    $placed_on = date('d-M-Y');
 
    $cart_total = 0;
@@ -67,10 +62,8 @@ if(isset($_POST['order'])){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>checkout</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 
 </head>

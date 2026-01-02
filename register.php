@@ -4,21 +4,17 @@ include 'config.php';
 
 if(isset($_POST['submit'])){
 
-   // Sanitize and store form inputs
-   $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);  // Ensure it's sanitized as email
-   $pass = md5($_POST['pass']);  // Hash the password with md5 for storing
-   $cpass = md5($_POST['cpass']);  // Hash the confirm password
+   $name = $_POST['name'];
+   $email = $_POST['email'];  
+   $pass = md5($_POST['pass']);  
+   $cpass = md5($_POST['cpass']); 
 
-   // Handle image upload
-   $image = $_FILES['image']['name'];
-   $image = filter_var($image, FILTER_SANITIZE_STRING);  // Ensure image name is sanitized
+   $image = $_FILES['image']['name']; 
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
    
    $image_folder = 'uploaded_img/' . uniqid() . '_' . $image;
 
-   // Check if the email already exists
    $select = $conn->prepare("SELECT * FROM `users` WHERE email = ?");
    $select->execute([$email]);
 
@@ -33,11 +29,9 @@ $insert->execute([$name, $email, $pass, $image_folder]);
 
 
          if($insert) {
-            // Check image size (max 2MB)
             if($image_size > 2000000){
                $message[] = 'Image size is too large!';
             } else {
-               // Move the image to the desired folder after successful insertion
                move_uploaded_file($image_tmp_name, $image_folder);
                $message[] = 'Registered successfully!';
                header('location:login.php');
@@ -60,10 +54,8 @@ $insert->execute([$name, $email, $pass, $image_folder]);
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>register</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="css/components.css">
 
 </head>

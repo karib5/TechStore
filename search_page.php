@@ -53,7 +53,6 @@ if(!isset($user_id)){
    <?php
       if(isset($_POST['search_btn'])){
       $search_box = $_POST['search_box'];
-      $search_box = filter_var($search_box, FILTER_SANITIZE_STRING);
       $select_products = $conn->prepare("SELECT * FROM `products` WHERE name LIKE '%{$search_box}%' OR category LIKE '%{$search_box}%'");
       $select_products->execute();
       if($select_products->rowCount() > 0){

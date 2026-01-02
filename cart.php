@@ -24,7 +24,7 @@ if(isset($_GET['delete_all'])){
 
 if(isset($_POST['update_qty'])){
    $cart_id = $_POST['cart_id'];
-   $p_qty   = filter_var($_POST['p_qty'], FILTER_SANITIZE_STRING);
+   $p_qty   = $_POST['p_qty'];
    updateCartQuantity($cart_id, $p_qty);
    $message[] = 'cart quantity updated';
 }
