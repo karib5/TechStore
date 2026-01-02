@@ -73,7 +73,7 @@ if(isset($_POST['update_qty'])){
 
       <div class="flex-btn">
          <input type="number" min="1" value="<?= $fetch_cart['quantity']; ?>" name="p_qty" class="qty">
-         <input type="submit" value="update" name="update_qty" class="option-btn">
+         <input type="button" value="update" name="update_qty" class="option-btn" onclick="ajax_update_qty(this)">
       </div>
 
       <div class="sub-total">
@@ -104,6 +104,49 @@ if(isset($_POST['update_qty'])){
 
 <?php include 'footer.php'; ?>
 <script src="js/script.js"></script>
+<script>
+function ajax_update_qty(btn){
+
+    let form = btn.closest('.box');
+
+    let cart_id = form.querySelector('input[name="cart_id"]').value;
+    let p_qty   = form.querySelector('input[name="p_qty"]').value;
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.open('POST', 'cart_update_query.php', true);
+    xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+    xhttp.send('update_qty=1'+ '&cart_id=' + cart_id+ '&p_qty=' + p_qty);
+
+    xhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+
+            let res = this.responseText.split('|');
+
+            let message     = res[0];
+            let sub_total   = res[1];
+            let grand_total = res[2];
+
+            let box = document.getElementById('ajax-message');
+            box.innerHTML = `
+                <div class="message">
+                    <span>${message}</span>
+                </div>
+            `;
+
+            form.querySelector('.sub-total span').innerText =
+                '$' + sub_total + '/-';
+
+            document.querySelector('.cart-total span').innerText =
+                '$' + grand_total + '/-';
+
+            setTimeout(() => {
+                box.innerHTML = '';
+            }, 3000);
+        }
+    }
+}
+</script>
 
 </body>
 </html>
