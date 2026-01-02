@@ -12,7 +12,7 @@ if(isset($message)){
 }
 
 ?>
-
+<div id="ajax-message"></div>
 <header class="header">
 
    <div class="flex">

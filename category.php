@@ -10,60 +10,9 @@ $user_id = $_SESSION['user_id'];
 if(!isset($user_id)){
    header('location:login.php');
 };
-if(isset($_POST['add_to_wishlist'])){
 
-   $pid = $_POST['pid'];
-   $p_name = $_POST['p_name'];
-   $p_price = $_POST['p_price'];
-   $p_image = $_POST['p_image'];
 
-   $check_wishlist_numbers = $conn->prepare("SELECT * FROM `wishlist` WHERE name = ? AND user_id = ?");
-   $check_wishlist_numbers->execute([$p_name, $user_id]);
 
-   $check_cart_numbers = $conn->prepare("SELECT * FROM `cart` WHERE name = ? AND user_id = ?");
-   $check_cart_numbers->execute([$p_name, $user_id]);
-
-   if($check_wishlist_numbers->rowCount() > 0){
-      $message[] = 'already added to wishlist!';
-   }elseif($check_cart_numbers->rowCount() > 0){
-      $message[] = 'already added to cart!';
-   }else{
-      $insert_wishlist = $conn->prepare("INSERT INTO `wishlist`(user_id, pid, name, price, image) VALUES(?,?,?,?,?)");
-      $insert_wishlist->execute([$user_id, $pid, $p_name, $p_price, $p_image]);
-      $message[] = 'added to wishlist!';
-   }
-
-}
-
-if(isset($_POST['add_to_cart'])){
-
-   $pid = $_POST['pid'];
-   $p_name = $_POST['p_name'];
-   $p_price = $_POST['p_price'];
-   $p_image = $_POST['p_image'];
-   $p_qty = $_POST['p_qty'];
-
-   $check_cart_numbers = $conn->prepare("SELECT * FROM `cart` WHERE name = ? AND user_id = ?");
-   $check_cart_numbers->execute([$p_name, $user_id]);
-
-   if($check_cart_numbers->rowCount() > 0){
-      $message[] = 'already added to cart!';
-   }else{
-
-      $check_wishlist_numbers = $conn->prepare("SELECT * FROM `wishlist` WHERE name = ? AND user_id = ?");
-      $check_wishlist_numbers->execute([$p_name, $user_id]);
-
-      if($check_wishlist_numbers->rowCount() > 0){
-         $delete_wishlist = $conn->prepare("DELETE FROM `wishlist` WHERE name = ? AND user_id = ?");
-         $delete_wishlist->execute([$p_name, $user_id]);
-      }
-
-      $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
-      $insert_cart->execute([$user_id, $pid, $p_name, $p_price, $p_qty, $p_image]);
-      $message[] = 'added to cart!';
-   }
-
-}
 ?>
 
 <!DOCTYPE html>
@@ -108,8 +57,9 @@ if(isset($_POST['add_to_cart'])){
 
       <input type="number" min="1" value="1" name="p_qty" class="qty">
 
-      <input type="submit" value="add to wishlist" class="option-btn" name="add_to_wishlist">
-      <input type="submit" value="add to cart" class="btn" name="add_to_cart">
+      <input type="button" value="add to wishlist" class="option-btn" name="add_to_wishlist" onclick="ajax_wishlist(this)">
+      <input type="button" value="add to cart" class="btn" onclick="ajax_cart(this)">
+
    </form>
    <?php
          }
@@ -125,6 +75,43 @@ if(isset($_POST['add_to_cart'])){
 <?php include 'footer.php'; ?>
 
 <script src="js/script.js"></script>
+<script>
+function ajax_cart(btn){
+
+    let form = btn.closest('.box');
+
+    let pid     = form.querySelector('input[name="pid"]').value;
+    let p_name  = form.querySelector('input[name="p_name"]').value;
+    let p_price = form.querySelector('input[name="p_price"]').value;
+    let p_image = form.querySelector('input[name="p_image"]').value;
+    let p_qty   = form.querySelector('input[name="p_qty"]').value;
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.open('POST', 'cart_wishlist_query.php', true);
+    xhttp.setRequestHeader(
+        'Content-type',
+        'application/x-www-form-urlencoded'
+    );
+
+    xhttp.send('add_to_cart=1' + '&pid=' + pid + '&p_name=' + p_name  + '&p_price=' + p_price + '&p_image=' + p_image + '&p_qty=' + p_qty);
+
+    xhttp.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200){
+
+        let box = document.getElementById('ajax-message');
+        box.innerHTML = `
+            <div class="message">
+                <span>${this.responseText}</span>
+            </div>
+        `;
+
+        setTimeout(() => { box.innerHTML = '';}, 3000);
+    }
+}
+}
+
+</script>
+
 
 </body>
 </html>
