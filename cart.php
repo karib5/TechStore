@@ -28,7 +28,35 @@ if(isset($_POST['update_qty'])){
    updateCartQuantity($cart_id, $p_qty);
    $message[] = 'cart quantity updated';
 }
+if(isset($_POST['add_to_cart'])){
 
+   $pid = $_POST['pid'];
+   $p_name = $_POST['p_name'];
+   $p_price = $_POST['p_price'];
+   $p_image = $_POST['p_image'];
+   $p_qty = $_POST['p_qty'];
+
+   $check_cart_numbers = $conn->prepare("SELECT * FROM `cart` WHERE name = ? AND user_id = ?");
+   $check_cart_numbers->execute([$p_name, $user_id]);
+
+   if($check_cart_numbers->rowCount() > 0){
+      $message[] = 'already added to cart!';
+   }else{
+
+      $check_wishlist_numbers = $conn->prepare("SELECT * FROM `wishlist` WHERE name = ? AND user_id = ?");
+      $check_wishlist_numbers->execute([$p_name, $user_id]);
+
+      if($check_wishlist_numbers->rowCount() > 0){
+         $delete_wishlist = $conn->prepare("DELETE FROM `wishlist` WHERE name = ? AND user_id = ?");
+         $delete_wishlist->execute([$p_name, $user_id]);
+      }
+
+      $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
+      $insert_cart->execute([$user_id, $pid, $p_name, $p_price, $p_qty, $p_image]);
+      $message[] = 'added to cart!';
+   }
+
+}
 ?>
 
 <!DOCTYPE html>
