@@ -1,11 +1,11 @@
 <?php
-require_once __DIR__ . '/../config/config.php';
+@include '../Controller/config.php';
 session_start();
 
 $admin_id = $_SESSION['admin_id'];
 
 if (!isset($admin_id)) {
-   header('location:login.php');
+   header('location:../Controller/login.php');
    exit;
 }
 
@@ -24,7 +24,7 @@ if (isset($_GET['delete'])) {
       $_SESSION['message'] = 'You cannot delete your own account!';
    }
 
-   header('location:admin_users.php');
+   header('location:../Controller/admin_users.php');
    exit;
 }
 ?>
