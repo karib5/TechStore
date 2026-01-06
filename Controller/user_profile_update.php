@@ -21,7 +21,7 @@ if(isset($_POST['update_profile'])){
    $image = $_FILES['image']['name'];
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folder = 'uploaded_img/'.$image;
+   $image_folder = '../Assets/uploaded_img/'.$image;
    $old_image = $_POST['old_image'];
 
    if(!empty($image)){
@@ -32,7 +32,7 @@ if(isset($_POST['update_profile'])){
          $update_image->execute([$image, $user_id]);
          if($update_image){
             move_uploaded_file($image_tmp_name, $image_folder);
-            unlink('uploaded_img/'.$old_image);
+            unlink('../Assets/uploaded_img/'.$old_image);
             $message[] = 'image updated successfully!';
          };
       };
