@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2026 at 05:24 PM
+-- Generation Time: Jan 06, 2026 at 06:39 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,6 +37,14 @@ CREATE TABLE `cart` (
   `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `user_id`, `pid`, `name`, `price`, `quantity`, `image`) VALUES
+(136, 40, 33, 'EFG', 2432, 1, 'ddr5-ram-1460x960.jpg-ezgif.com-webp-to-jpg-converter.jpg'),
+(137, 40, 38, '356246', 324, 1, 'ryzen-9-7950x-01-500x500-ezgif.com-webp-to-jpg-converter.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -51,6 +59,18 @@ CREATE TABLE `message` (
   `number` varchar(12) NOT NULL,
   `message` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`id`, `user_id`, `name`, `email`, `number`, `message`) VALUES
+(9, 34, 'Karib', 'karibhasan5@gmail.com', '3434', '434'),
+(10, 34, 'Karib Hasan', 'karibhasan5@gmail.com', '24143', 'faefeaf'),
+(12, 34, 'Karib Hasan', 'karibhasan5@gmail.com', '45325', 'fwqafwaf'),
+(13, 34, 'Karib Hasan', 'karibhasan5@gmail.com', '534', '534'),
+(14, 34, 'Karib', 'karibhasan5@gmail.com', '63', 'rgg'),
+(15, 34, 'Karib Hasan', 'karibhasan5@gmail.com', '435', 'dsgs');
 
 -- --------------------------------------------------------
 
@@ -77,8 +97,13 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `name`, `number`, `email`, `method`, `address`, `total_products`, `total_price`, `placed_on`, `payment_status`) VALUES
-(15, 37, 'Sumshun Nahar Eity', '3232', 'ef@gmail.com', 'cash on delivery', 'flat no. C Block , Road 5 , House 5, Bashundhara R/A cscsc Dhaka cacaa Bangladesh - 1229', ', 1STPLAYER X4-M White mATX Gaming Casing ( 1 )', 50000, '27-Dec-2025', 'pending'),
-(16, 38, 'SUMSHUN NAHAR EITY', '01633530766', '22-48227-2@student.aiub.edu', 'cash on delivery', 'flat no. F block , road 9 , house 182 , bashundhara r/a cscsc Dhaka cacaa Bangladesh - 1229', ', 1STPLAYER X4-M White mATX Gaming Casing ( 1 )', 50000, '06-Jan-2026', 'pending');
+(15, 34, 'Karib Hasan', '4325', 'karibhasan5@gmail.com', 'paytm', 'flat no. Road 10,Baridhara DOHS,Dhaka,Bangladesh 4634 Dhaka 54533 Bangladesh - 1219', ', RARR ( 1 ), EFG ( 1 )', 2676, '26-Dec-2025', 'completed'),
+(17, 34, 'Karib Hasan', '244', 'karibhasan5@gmail.com', 'cash on delivery', 'flat no. Road 10,Baridhara DOHS,Dhaka,Bangladesh 2434 Dhaka 2442 Bangladesh - 1219', ', ASF ( 1 )', 23424, '26-Dec-2025', 'completed'),
+(18, 34, 'Karib Hasan', '424', 'karibhasan5@gmail.com', 'cash on delivery', 'flat no. Road 10,Baridhara DOHS,Dhaka,Bangladesh 2424 Dhaka 2424 Bangladesh - 4224', ', WEAFFA ( 1 )', 23424, '26-Dec-2025', 'pending'),
+(19, 34, 'Karib Hasan', '324', 'karibhasan5@gmail.com', 'cash on delivery', 'flat no. Road 10,Baridhara DOHS,Dhaka,Bangladesh 342 Dhaka 4234 Bangladesh - 1219', ', ASF ( 1 )', 23424, '26-Dec-2025', 'pending'),
+(20, 34, 'Karib Hasan', '45454545', 'karibhasan5@gmail.com', 'cash on delivery', 'flat no. Road 10,Baridhara DOHS,Dhaka,Bangladesh 45 Dhaka 5454 Bangladesh - 1219', ', 356246 ( 1 )', 324, '02-Jan-2026', 'pending'),
+(21, 34, 'Karib Hasan', '345254', 'karibhasan5@gmail.com', 'credit card', 'flat no. Road 10,Baridhara DOHS,Dhaka,Bangladesh 4535 Dhaka 4534 Bangladesh - 1219', ', EFG ( 4 )', 9728, '06-Jan-2026', 'pending'),
+(22, 34, 'Karib Hasan', '24132', 'karibhasan5@gmail.com', 'cash on delivery', 'flat no. Road 10,Baridhara DOHS,Dhaka,Bangladesh 52345 Dhaka 5345 Bangladesh - 1219', ', EFG ( 1 )', 2432, '06-Jan-2026', 'pending');
 
 -- --------------------------------------------------------
 
@@ -100,9 +125,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `category`, `details`, `price`, `image`) VALUES
-(32, '1STPLAYER X4-M White mATX Gaming Casing', 'Casing', 'The X4-M white casing supports liquid cooling systems with a length of up to 24cm, guaranteeing superb temperature control and allowing users to push their systems to their limits without losing performance.  ', 50000, 'sdl-sanjaya-4gbbKX63V5I-unsplash.jpg'),
-(35, 'Red Dragon-M Gaming Casing', 'Casing', 'Red Dragon-M Gaming Casing supports liquid cooling systems with a length of up to 24cm, guaranteeing superb temperature control and allowing users to push their systems to their limits without losing performance.', 10000, 'brian-j-tromp-8HZ4pnu5-Rw-unsplash.jpg'),
-(36, 'Logitech Casing ', 'Casing', 'Logitech Casing  supports liquid cooling systems with a length of up to 24cm, guaranteeing superb temperature control and allowing users to push their systems to their limits without losing performance.', 5000, 'olivier-collet-VDGBFiaM6Cs-unsplash.jpg');
+(32, 'rer', 'vegitables', '3232', 3232, 'ryzen-9-7950x-01-500x500-ezgif.com-webp-to-jpg-converter.jpg'),
+(33, 'EFG', 'GPU', 'RWA', 2432, 'ddr5-ram-1460x960.jpg-ezgif.com-webp-to-jpg-converter.jpg'),
+(35, 'ASF', 'Processor', 'FAEFE', 23424, 'ryzen-9-7950x-01-500x500-ezgif.com-webp-to-jpg-converter.jpg'),
+(36, 'WEAFFA', 'RAM', 'AFSFAE', 23424, 'ddr5-ram-1460x960.jpg-ezgif.com-webp-to-jpg-converter.jpg'),
+(38, '356246', 'GPU', '3232', 324, 'ryzen-9-7950x-01-500x500-ezgif.com-webp-to-jpg-converter.jpg'),
+(39, 'fwr', 'GPU', 'fae', 3223, 'ddr5-ram-1460x960.jpg-ezgif.com-webp-to-jpg-converter.jpg');
 
 -- --------------------------------------------------------
 
@@ -124,11 +152,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_type`, `image`) VALUES
-(34, 'Karib Hasan', 'karibhasan122@gmail.com', 'b59c67bf196a4758191e42f76670ceba', 'user', 'Gemini_Generated_Image_6rhvyu6rhvyu6rhv.png'),
-(35, 'Hasan', 'karib@gmail.com', 'b59c67bf196a4758191e42f76670ceba', 'user', 'ChatGPT Image Dec 9, 2025, 02_16_08 PM.png'),
-(36, 'e', 'esumshun@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'admin', 'brian-j-tromp-8HZ4pnu5-Rw-unsplash.jpg'),
-(37, 'eityyy', 'ef@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'user', 'uploaded_img/694e775a97713_logo.png'),
-(38, 'sums eity', 'abc@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'user', 'uploaded_img/695cea0af1507_Capture2.PNG');
+(38, 'Karib Hasan', 'karibhasan12211@gmail.com', '11111111', 'user', '../Assets/uploaded_img/695d40623c1ae_ChatGPT Image Dec 9, 2025, 02_16_08 PM.png'),
+(39, 'Karib Hasan', 'karibhasan5@gmail.com', '11111111', 'admin', '../Assets/uploaded_img/695d41773aa53_Gemini_Generated_Image_6rhvyu6rhvyu6rhv.png'),
+(40, 'Karib Hasan', 'karibhasan122@gmail.com', '11111111', 'user', 'Media (10).jpg');
 
 -- --------------------------------------------------------
 
@@ -193,37 +219,37 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
