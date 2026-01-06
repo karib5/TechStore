@@ -1,5 +1,5 @@
 <?php
-@include 'config.php';
+@include '../Controller/config.php';
 
 function deleteCartItem($id){
     global $conn;

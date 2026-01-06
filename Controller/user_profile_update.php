@@ -69,7 +69,7 @@ if(isset($_POST['update_profile'])){
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-   <link rel="stylesheet" href="css/components.css">
+   <link rel="stylesheet" href="../View/components.css">
 
 </head>
 <body>
@@ -81,7 +81,7 @@ if(isset($_POST['update_profile'])){
    <h1 class="title">update profile</h1>
 
    <form action="" method="POST" enctype="multipart/form-data">
-      <img src="uploaded_img/<?= $fetch_profile['image']; ?>" alt="">
+      <img src="../Assets/uploaded_img/<?= $fetch_profile['image']; ?>" alt="">
       <div class="flex">
          <div class="inputBox">
             <span>username :</span>

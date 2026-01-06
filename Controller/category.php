@@ -1,7 +1,7 @@
 <?php
 
 @include 'config.php';
-require_once 'category_query.php';
+require_once '../Model/category_query.php';
 
 session_start();
 
@@ -25,7 +25,7 @@ if(!isset($user_id)){
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../View/style.css">
 </head>
 <body>
 
@@ -56,7 +56,7 @@ if(!isset($user_id)){
       
       <div class="price">$<span><?= $fetch_products['price']; ?></span>/-</div>
 
-      <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
+      <img src="../Assets/uploaded_img/<?= $fetch_products['image']; ?>" alt="">
       <div class="name"><?= $fetch_products['name']; ?></div>
 
       <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
@@ -98,7 +98,7 @@ function ajax_cart(btn){
     let p_qty   = form.querySelector('input[name="p_qty"]').value;
 
     let xhttp = new XMLHttpRequest();
-    xhttp.open('POST', 'cart_wishlist_query.php', true);
+    xhttp.open('POST', '../Model/cart_wishlist_query.php', true);
     xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 
     xhttp.send('add_to_cart=1' + '&pid=' + pid + '&p_name=' + p_name  + '&p_price=' + p_price + '&p_image=' + p_image + '&p_qty=' + p_qty);
@@ -130,7 +130,7 @@ function ajax_wishlist(btn){
     let p_image = form.querySelector('input[name="p_image"]').value;
 
     let xhttp = new XMLHttpRequest();
-    xhttp.open('POST', 'cart_wishlist_query.php', true);
+    xhttp.open('POST', '../Model/cart_wishlist_query.php', true);
     xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 
     xhttp.send('add_to_wishlist=1'+ '&pid=' + pid + '&p_name=' + p_name+ '&p_price=' + p_price+ '&p_image=' + p_image);

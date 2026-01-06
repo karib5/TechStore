@@ -77,7 +77,7 @@ if(isset($_POST['add_to_cart'])){
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../View/style.css">
 
 </head>
 <body>
@@ -91,28 +91,28 @@ if(isset($_POST['add_to_cart'])){
    <div class="box-container">
 
       <div class="box">
-   <img src="images/Casing.jpg" alt="">
+   <img src="../Assets/images/Casing.jpg" alt="">
    <h3>Casing</h3>
    <p>Durable PC casing designed to protect components and ensure proper airflow.</p>
    <a href="category.php?category=Casing" class="btn">Casing</a>
 </div>
 
 <div class="box">
-   <img src="images/GPU.jpg" alt="">
+   <img src="../Assets/images/GPU.jpg" alt="">
    <h3>Graphics Card</h3>
    <p>High-performance GPU built for gaming, rendering, and graphic-intensive tasks.</p>
    <a href="category.php?category=GPU" class="btn">GPU</a>
 </div>
 
 <div class="box">
-   <img src="images/Processor.jpg" alt="">
+   <img src="../Assets/images/Processor.jpg" alt="">
    <h3>Processor</h3>
    <p>Powerful CPU for multitasking, high speed processing, and system performance.</p>
    <a href="category.php?category=Processor" class="btn">Processor</a>
 </div>
 
 <div class="box">
-   <img src="images/RAM1.jpg" alt="">
+   <img src="../Assets/images/RAM1.jpg" alt="">
    <h3>RAM</h3>
    <p>Fast memory modules that improve system responsiveness and performance.</p>
    <a href="category.php?category=RAM" class="btn">RAM</a>
@@ -140,7 +140,7 @@ if(isset($_POST['add_to_cart'])){
    ?>
    <form action="" class="box" method="POST">
       <div class="price">$<span><?= $fetch_products['price']; ?></span>/-</div>
-      <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
+      <img src="../Assets/uploaded_img/<?= $fetch_products['image']; ?>" alt="">
       <div class="name"><?= $fetch_products['name']; ?></div>
       <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
       <input type="hidden" name="p_name" value="<?= $fetch_products['name']; ?>">

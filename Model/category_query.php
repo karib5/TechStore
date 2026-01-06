@@ -1,5 +1,5 @@
 <?php
-    require_once('config.php');
+    require_once('../Controller/config.php');
 
     function getProductsByCategory($category_name){
         global $conn;

@@ -1,7 +1,7 @@
 <?php
 
 @include 'config.php';
-require_once 'cart_query.php';
+require_once '../Model/cart_query.php';
 
 session_start();
 
@@ -40,7 +40,7 @@ if(isset($_POST['update_qty'])){
    <title>shopping cart</title>
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../View/style.css">
 </head>
 <body>
 
@@ -65,7 +65,7 @@ if(isset($_POST['update_qty'])){
          onclick="return confirm('delete this from cart?');"></a>
 
 
-      <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="">
+      <img src="../Assets/uploaded_img/<?= $fetch_cart['image']; ?>" alt="">
       <div class="name"><?= $fetch_cart['name']; ?></div>
       <div class="price">$<?= $fetch_cart['price']; ?>/-</div>
 
@@ -113,7 +113,7 @@ function ajax_update_qty(btn){
     let p_qty   = form.querySelector('input[name="p_qty"]').value;
 
     let xhttp = new XMLHttpRequest();
-    xhttp.open('POST', 'cart_update_query.php', true);
+    xhttp.open('POST', '../Model/cart_update_query.php', true);
     xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 
     xhttp.send('update_qty=1'+ '&cart_id=' + cart_id+ '&p_qty=' + p_qty);
