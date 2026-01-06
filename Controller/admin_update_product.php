@@ -41,12 +41,14 @@ if (isset($_SESSION['message'])) {
       <input type="text" name="name" required class="box" value="<?= $fetch_products['name']; ?>">
       <input type="number" name="price" min="0" required class="box" value="<?= $fetch_products['price']; ?>">
       <select name="category" class="box" required>
-         <option selected><?= $fetch_products['category']; ?></option>
-         <option value="vegitables">vegitables</option>
-         <option value="fruits">fruits</option>
-         <option value="meat">meat</option>
-         <option value="fish">fish</option>
-      </select>
+   <option selected value="<?= $fetch_products['category']; ?>">
+      <?= $fetch_products['category']; ?>
+   </option>
+   <option value="Casing">Casing</option>
+   <option value="GPU">GPU</option>
+   <option value="Processor">Processor</option>
+   <option value="RAM">RAM</option>
+</select>
       <textarea name="details" required class="box" cols="30" rows="10"><?= $fetch_products['details']; ?></textarea>
       <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png">
       <div class="flex-btn">
