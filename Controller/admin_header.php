@@ -1,4 +1,7 @@
-<?php include 'admin_header_query.php'; ?>
+<?php
+require_once __DIR__ . '/../Model/admin_header_query.php';
+?>
+
 
 <header class="header">
 
