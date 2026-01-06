@@ -1,11 +1,11 @@
 <?php
-require_once __DIR__ . '/../config/config.php';
+@include '../Controller/config.php';
 session_start();
 
 $admin_id = $_SESSION['admin_id'];
 
 if (!isset($admin_id)) {
-   header('location:login.php');
+   header('location:../Controller/login.php');
    exit;
 }
 
@@ -42,7 +42,7 @@ if (isset($_POST['update_product'])) {
    }
 
    $_SESSION['message'] = 'Product updated successfully!';
-   header('location:admin_products.php');
+   header('location:../Controller/admin_products.php');
    exit;
 }
 ?>
