@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
    
-   $image_folder = 'uploaded_img/' . uniqid() . '_' . $image;
+   $image_folder = '../Assets/uploaded_img/' . uniqid() . '_' . $image;
 
    $select = $conn->prepare("SELECT * FROM `users` WHERE email = ?");
    $select->execute([$email]);
@@ -56,7 +56,7 @@ $insert->execute([$name, $email, $pass, $image_folder]);
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-   <link rel="stylesheet" href="css/components.css">
+   <link rel="stylesheet" href="../View/components.css">
 
 </head>
 <body>

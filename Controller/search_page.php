@@ -24,7 +24,7 @@ if(!isset($user_id)){
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../View/style.css">
 
 </head>
 <body>
@@ -60,7 +60,7 @@ if(!isset($user_id)){
    ?>
    <form action="" class="box" method="POST">
       <div class="price">$<span><?= $fetch_products['price']; ?></span>/-</div>
-      <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
+      <img src="../Assets/uploaded_img/<?= $fetch_products['image']; ?>" alt="">
       <div class="name"><?= $fetch_products['name']; ?></div>
       <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
       <input type="hidden" name="p_name" value="<?= $fetch_products['name']; ?>">

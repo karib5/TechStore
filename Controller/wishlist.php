@@ -69,7 +69,7 @@ if(isset($_GET['delete_all'])){
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../View/style.css">
 
 </head>
 <body>
@@ -92,7 +92,7 @@ if(isset($_GET['delete_all'])){
    <form action="" method="POST" class="box">
       <a href="wishlist.php?delete=<?= $fetch_wishlist['id']; ?>" class="fas fa-times" onclick="return confirm('delete this from wishlist?');"></a>
       
-      <img src="uploaded_img/<?= $fetch_wishlist['image']; ?>" alt="">
+      <img src="../Assets/uploaded_img/<?= $fetch_wishlist['image']; ?>" alt="">
       <div class="name"><?= $fetch_wishlist['name']; ?></div>
       <div class="price">$<?= $fetch_wishlist['price']; ?>/-</div>
       <input type="number" min="1" value="1" class="qty" name="p_qty">
