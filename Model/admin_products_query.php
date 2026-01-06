@@ -22,7 +22,7 @@ if (isset($_POST['add_product'])) {
 
    $image = $_FILES['image']['name'];
    $image_tmp = $_FILES['image']['tmp_name'];
-   $image_folder = 'uploaded_img/' . $image;
+   $image_folder = '../Assets/uploaded_img/' . $image;
 
    $insert_product = $conn->prepare(
       "INSERT INTO `products` (name, category, price, image, details)
