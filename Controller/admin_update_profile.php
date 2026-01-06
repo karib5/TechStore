@@ -83,7 +83,7 @@ if (isset($_SESSION['message'])) {
  
 </section>
  
-<!-- FIXED SCRIPT PATH -->
+
 <script src="../Controller/js/script.js"></script>
  
 </body>
