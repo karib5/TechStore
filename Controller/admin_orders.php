@@ -1,4 +1,6 @@
-<?php include 'admin_orders_query.php'; ?>
+<?php
+require_once __DIR__ . '/../Model/admin_orders_query.php';
+?>
 <?php
 @include 'config.php';
 ?>

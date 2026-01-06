@@ -1,4 +1,6 @@
-<?php include 'admin_update_product_query.php'; ?>
+<?php
+require_once __DIR__ . '/../Model/admin_update_product_query.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
