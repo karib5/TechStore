@@ -14,6 +14,7 @@ $show_products = $conn->prepare("SELECT * FROM `products`");
 $show_products->execute();
 
 
+
 if (isset($_POST['add_product'])) {
    $name = $_POST['name'];
    $category = $_POST['category'];

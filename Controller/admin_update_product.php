@@ -22,6 +22,7 @@ if (isset($_SESSION['message'])) {
    ';
    unset($_SESSION['message']);
 }
+
 ?>
 
 <?php include 'admin_header.php'; ?>

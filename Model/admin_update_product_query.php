@@ -10,6 +10,7 @@ if (!isset($admin_id)) {
 }
 
 
+
 if (isset($_GET['update'])) {
    $update_id = $_GET['update'];
    $select_products = $conn->prepare("SELECT * FROM `products` WHERE id = ?");
