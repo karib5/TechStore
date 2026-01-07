@@ -35,5 +35,6 @@ if(isset($_POST['update_qty'])){
    exit;
 }
 
+
 echo "invalid_request|0|0";
 exit;
