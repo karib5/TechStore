@@ -26,6 +26,7 @@ if (isset($_SESSION['message'])) {
 }
 ?>
  
+ 
 <?php include 'admin_header.php'; ?>
  
 <section class="add-products">
@@ -74,7 +75,7 @@ if (isset($_SESSION['message'])) {
 <div class="box">
 <div class="price">$<?= $fetch_products['price']; ?>/-</div>
  
-      <!-- ✅ FIXED IMAGE PATH -->
+     
 <img src="../Assets/uploaded_img/<?= htmlspecialchars($fetch_products['image']); ?>" alt="product">
  
       <div class="name"><?= htmlspecialchars($fetch_products['name']); ?></div>
@@ -101,7 +102,7 @@ if (isset($_SESSION['message'])) {
  
 </section>
  
-<!-- ✅ FIXED SCRIPT PATH -->
+
 <script src="js/script.js"></script>
  
 </body>
