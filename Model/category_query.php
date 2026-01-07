@@ -8,6 +8,7 @@
         $stmt = $conn->prepare($sql);
         $stmt->execute([$category_name]);
 
+        
         return $stmt;
     }
 ?>
