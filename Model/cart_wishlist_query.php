@@ -28,6 +28,7 @@ if (isset($_POST['add_to_cart'])) {
       exit;
    }
 
+   
    $check_wishlist_numbers = $conn->prepare(
       "SELECT * FROM wishlist WHERE name = ? AND user_id = ?"
    );
