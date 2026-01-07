@@ -1,12 +1,14 @@
 <?php
 @include '../Controller/config.php';
 
+
 function deleteCartItem($id){
     global $conn;
     $sql = "DELETE FROM cart WHERE id = ?";
     $stmt = $conn->prepare($sql);
     return $stmt->execute([$id]);
 }
+
 
 
 function deleteAllCartItems($user_id){

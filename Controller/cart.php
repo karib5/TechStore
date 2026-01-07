@@ -12,10 +12,12 @@ if(!isset($user_id)){
 }
 
 
+
 if(isset($_GET['delete'])){
    deleteCartItem($_GET['delete']);
    header('location:cart.php');
 }
+
 
 if(isset($_GET['delete_all'])){
    deleteAllCartItems($user_id);
