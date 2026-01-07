@@ -17,7 +17,6 @@ window.onscroll = () =>{
    navbar.classList.remove('active');
 }
 
-// Function to update cart count on page load
 function updateCartCountOnLoad() {
    const xhr = new XMLHttpRequest();
    xhr.open('GET', 'ajax_action.php?action=get_cart_count', true);
@@ -39,7 +38,6 @@ function updateCartCountOnLoad() {
    xhr.send();
 }
 
-// Update cart count when page loads
 document.addEventListener('DOMContentLoaded', function() {
    updateCartCountOnLoad();
 });
