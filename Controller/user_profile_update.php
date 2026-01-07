@@ -1,6 +1,7 @@
 <?php
 
 @include 'config.php';
+require_once '../Model/user_profile_query.php';
 
 session_start();
 
@@ -11,23 +12,15 @@ if(!isset($user_id)){
    exit;
 }
 
-/* FETCH USER PROFILE */
-$select_profile = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
-$select_profile->execute([$user_id]);
-$fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
+$fetch_profile = getUserProfile($user_id);
 
 if(isset($_POST['update_profile'])){
 
    $name  = $_POST['name'];
    $email = $_POST['email'];
 
-   // UPDATE NAME & EMAIL
-   $update_profile = $conn->prepare(
-      "UPDATE `users` SET name = ?, email = ? WHERE id = ?"
-   );
-   $update_profile->execute([$name, $email, $user_id]);
+   updateUserProfile($user_id, $name, $email);
 
-   /* IMAGE UPDATE */
    $image = $_FILES['image']['name'];
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
@@ -38,12 +31,8 @@ if(isset($_POST['update_profile'])){
       if($image_size > 2000000){
          $message[] = 'image size is too large!';
       }else{
-         $update_image = $conn->prepare(
-            "UPDATE `users` SET image = ? WHERE id = ?"
-         );
-         $update_image->execute([$image, $user_id]);
-
-         if($update_image){
+         $updated = updateUserImage($user_id, $image);
+         if($updated){
             move_uploaded_file($image_tmp_name, $image_folder);
             if(!empty($old_image)){
                @unlink('../Assets/uploaded_img/'.$old_image);
@@ -53,9 +42,8 @@ if(isset($_POST['update_profile'])){
       }
    }
 
-   /* PASSWORD UPDATE (PLAIN TEXT) */
-   $old_pass     = $_POST['old_pass'];        // from DB (plain)
-   $update_pass  = $_POST['update_pass'];     // user input
+   $old_pass     = $_POST['old_pass'];        
+   $update_pass  = $_POST['update_pass'];     
    $new_pass     = $_POST['new_pass'];
    $confirm_pass = $_POST['confirm_pass'];
 
@@ -71,10 +59,7 @@ if(isset($_POST['update_profile'])){
          $message[] = 'password must be at least 8 characters!';
       }
       else{
-         $update_pass_query = $conn->prepare(
-            "UPDATE `users` SET password = ? WHERE id = ?"
-         );
-         $update_pass_query->execute([$new_pass, $user_id]);
+         updateUserPassword($user_id, $new_pass);
          $message[] = 'password updated successfully!';
       }
    }
