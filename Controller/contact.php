@@ -1,6 +1,7 @@
 <?php
 
 @include 'config.php';
+require_once '../Model/contact_query.php';
 
 session_start();
 
@@ -9,23 +10,15 @@ $user_id = $_SESSION['user_id'];
 if(!isset($user_id)){
    header('location:login.php');
 };
+
 if(isset($_POST['send'])){
 
-   $name = $_POST['name'];
-   $email = $_POST['email'];
+   $name   = $_POST['name'];
+   $email  = $_POST['email'];
    $number = $_POST['number'];
-   $msg = $_POST['msg'];
+   $msg    = $_POST['msg'];
 
-   $select_message = $conn->prepare("SELECT * FROM `message` WHERE name = ? AND email = ? AND number = ? AND message = ?");
-   $select_message->execute([$name, $email, $number, $msg]);
-
-      $insert_message = $conn->prepare("INSERT INTO `message`(user_id, name, email, number, message) VALUES(?,?,?,?,?)");
-      $insert_message->execute([$user_id, $name, $email, $number, $msg]);
-
-      $message[] = 'sent message successfully!';
-
-   
-
+   $message[] = sendContactMessage($user_id, $name, $email, $number, $msg);
 }
 
 ?>
@@ -39,9 +32,7 @@ if(isset($_POST['send'])){
    <title>contact</title>
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-
    <link rel="stylesheet" href="../View/style.css">
-
 </head>
 <body>
    
@@ -60,13 +51,6 @@ if(isset($_POST['send'])){
    </form>
 
 </section>
-
-
-
-
-
-
-
 
 <?php include 'footer.php'; ?>
 
