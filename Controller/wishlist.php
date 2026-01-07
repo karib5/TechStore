@@ -38,6 +38,7 @@ if(isset($_POST['add_to_cart'])){
       $message[] = 'added to cart!';
    }
 
+   
 }
 
 if(isset($_GET['delete'])){
