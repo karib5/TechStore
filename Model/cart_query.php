@@ -8,7 +8,6 @@ function deleteCartItem($id){
     return $stmt->execute([$id]);
 }
 
-
 function deleteAllCartItems($user_id){
     global $conn;
     $sql = "DELETE FROM cart WHERE user_id = ?";
