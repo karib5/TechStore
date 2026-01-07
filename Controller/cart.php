@@ -46,7 +46,6 @@ if(isset($_POST['update_qty'])){
 </head>
 <body>
 
-
 <?php include 'header.php'; ?>
 
 <section class="shopping-cart">
