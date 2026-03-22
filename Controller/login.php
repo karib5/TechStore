@@ -9,35 +9,38 @@ if(isset($_POST['submit'])){
    $email = $_POST['email'];
    $pass  = $_POST['pass']; 
 
-   $sql = "SELECT * FROM `users` WHERE email = ? AND password = ?";
-   $stmt = $conn->prepare($sql);
-   $stmt->execute([$email, $pass]);
+   if(strlen($pass) < 5 || !preg_match('/[0-9]/', $pass) || !preg_match('/[\W]/', $pass)){
+      $message[] = 'email or password does not match!';
+   }else{
 
-   $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      $sql = "SELECT * FROM `users` WHERE email = ? AND password = ?";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute([$email, $pass]);
 
-   
-   if($row){
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-      if($row['user_type'] == 'admin'){
+      if($row){
 
-         $_SESSION['admin_id'] = $row['id'];
-         header('location:admin_page.php');
-         exit;
+         if($row['user_type'] == 'admin'){
 
-      }elseif($row['user_type'] == 'user'){
+            $_SESSION['admin_id'] = $row['id'];
+            header('location:admin_page.php');
+            exit;
 
-         $_SESSION['user_id'] = $row['id'];
-         header('location:home.php');
-         exit;
+         }elseif($row['user_type'] == 'user'){
+
+            $_SESSION['user_id'] = $row['id'];
+            header('location:home.php');
+            exit;
+
+         }else{
+            $message[] = 'email or password does not match!';
+         }
 
       }else{
-         $message[] = 'no user found!';
+         $message[] = 'email or password does not match!';
       }
-
-   }else{
-      $message[] = 'incorrect email or password!';
    }
-
 }
 
 ?>
